@@ -1,0 +1,50 @@
+﻿!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body style="margin-left:400px;">
+
+    <a href="@Url.Action("create","ReclamationActivity")"><button class="mb-1 btn btn-info" type="button">add new Reclamation  Activity</button></a>
+
+    <div class="container">
+        <div class="row justify-content-center mb-5 pb-5">
+            <div class="col-md-7 text-center heading-section ftco-animate fadeInUp ftco-animated">
+                <span class="subheading">Kinderdarden</span>
+
+                <p>we are here for you just give us confiance and we will take care of you childrens</p>
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var p in ViewBag.result)
+
+            {
+                <div class="col-md-4 ftco-animate fadeInUp ftco-animated">
+                    <div class="blog-entry">
+
+                        <div class="text p-4 d-block">
+                            <div class="meta mb-3">
+                                <h1><div><a>@p.id</a></div></h1>
+                                <h3 class="heading"><a>@p.etat</a>  </h3>
+                                <div><a>@p.description</a></div>
+
+                                <a href="@Url.Action("Edit","ReclamationActivity", new { id = p.id })"><button class="mb-1 btn btn-info" type="button">Edit</button></a>
+
+                                <a href="@Url.Action("Delete","ReclamationActivity", new { id = p.id })"><button class="mb-1 btn btn-success" type="button">Delete</button></a>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+
+       
+
+</body>
+</html>
+

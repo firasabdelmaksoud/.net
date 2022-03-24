@@ -1,0 +1,30 @@
+﻿!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body style="margin-left:400px;">
+
+    <a href="@Url.Action("create","Affectation")">add new Activity</a>
+
+    <img id="img" src="resto.jpg" width="500px" height="250">
+    <table border="10px solid" width="50%" height="50px" cellspacing="0px" cellpadding="5px">
+
+        <tr>
+            <th>id</th>
+          
+        </tr>
+        @foreach (var p in ViewBag.result)
+
+        {
+            <tr>
+                <td>@p.id</td>
+               
+
+            </tr>
+        }
+    </table>
+
+</body>
+</html>

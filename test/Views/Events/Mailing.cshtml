@@ -1,0 +1,109 @@
+﻿@model test.Models.Events
+
+@{
+    ViewBag.Title = "Mailing";
+    Layout = "~/Views/Shared/_UsersLayout.cshtml";
+}
+
+<h2>Mailing</h2>
+@using (Html.BeginForm("SendMailEvent", "Events"))
+{
+
+    @Html.TextBoxFor(e => e.description)
+    <input type="submit" value="Send" />
+    //Champ texte de recherche
+    @*@Html.EditorFor(model => model.description, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.EditorFor(e => e.description, new { @class = "form-control form-control-heighter", placeholder = "email" })
+        @Html.LabelFor(e => e.description)*@
+    @*<input type="submit" value="Send" onclick="myFunction()" />*@
+    @*<input type="email" name="email" id="email" />*@
+    @*<input type="email" name="email" id="email" href="javascript:SendMailEventClick(\'' + model.Id + '\')" />*@
+    @*<a id="SendMailDP" href="javascript:SendMailEventClick(\'' + model.Id + '\')" class="float-right"><i class="icon-envelope-letter "></i> Send</a>*@
+
+    @*<button name="bemail" id="bemail" onclick="SendMailEvent(Model.id)">Send</button>
+    @Html.ActionLink("Mailing", "SendMailEvent", new { id = Model.id, description = Model.description, name = Model.name, date = Model.date.ToShortDateString() })*@
+
+    @*<script src="@Url.Content("~/scripts/mail.js")"></script>*@
+
+
+
+    @*@Html.ActionLink("Mailing", "SendMailEvent", new { id = Model.id, dest =})*@
+}
+<div>
+    <h4>Events</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.capacity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.capacity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.date)
+        </dt>
+
+        <dd>
+            @Convert.ToDateTime(Model.date).ToString("dd/MM/yyyy")
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Mailing", "SendMailEvent", new { id = Model.id ,nam = Model.id id = Model.id id = Model.id })*@
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+<script>
+    function SendMailEvent(id) {
+        if (id != null && id > 0) {
+            var dest = document.getElementById("email").value;
+            var SendMailEventURL = '@Url.Action("Mailing", "SendMailEvent")?id=' + id + ' &dest=' + dest
+
+            $.ajax({
+
+                url: SendMailEventURL,
+                success: function (result) {
+                    if (result.ErrorMsgs) {
+                        var txt = "";
+                        for (var i = 0; i < result.ErrorMsgs.length; i++) {
+                            txt += result.ErrorMsgs[i] + "\n\r";
+                        }
+
+                    }
+
+
+
+                },
+                error: function (e) {
+                }
+            });
+        }
+            }
+</script>

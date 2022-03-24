@@ -1,0 +1,53 @@
+﻿!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body style="margin-left:400px;">
+
+    <a href="@Url.Action("create","Matching")">add new matching</a>
+
+    <img id="img" src="resto.jpg" width="500px" height="250">
+    <table border="10px solid" width="50%" height="50px" cellspacing="0px" cellpadding="5px">
+
+        <tr>
+            <th>id</th>
+            <th>childrengarden </th>
+            <th>dateDebutParent</th>
+            <th>dateFinParent</th>
+            <th>dateDebutGarden</th>
+            <th>dateFinGarden</th>
+            <th>dateDebutMatching</th>
+            <th>dateFinMatching </th>
+            <th>result </th>
+            <th>parent </th>
+
+
+        </tr>
+        @foreach (var p in ViewBag.result)
+
+        {
+    <tr>
+        <td>@p.id</td>
+        <td>@p.childrengarden</td>
+        <td>@p.dateDebutParent</td>
+        <td>@p.dateFinParent</td>
+        <td>@p.dateDebutGarden</td>
+        <td>@p.dateFinGarden</td>
+        <td>@p.dateDebutMatching</td>
+        <td>@p.dateFinMatching</td>
+        <td>@p.result</td>
+        <td>@p.parent</td>
+
+        <td>
+            <a href="@Url.Action("Edit", "Matching", new { id = p.id })"><button class="mb-1 btn btn-danger" type="button">Edit</button></a>
+            <a href="@Url.Action("Delete", "Matching", new { id = p.id })"><button class="mb-1 btn btn-danger" type="button">Delete</button></a>
+        </td>
+    </tr>
+        }
+    </table>
+
+</body>
+</html>
+
